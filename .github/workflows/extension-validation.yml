@@ -73,7 +73,7 @@ jobs:
         run: |
           mkdir -p /tmp/validation-reports
           python scripts/check_description_files.py \
-            $(cat /tmp/validation-reports/changed_files.txt | tr '\n' ' ') \
+            $(grep -v "^schema/" /tmp/validation-reports/changed_files.txt | tr '\n' ' ') \
             > /tmp/validation-reports/extension-validation-report.md
 
           echo 'report<<EOF' >> $GITHUB_OUTPUT
